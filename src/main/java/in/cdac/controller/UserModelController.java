@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import in.cdac.model.UserModel;
 import in.cdac.service.UserModelService;
 
+import java.util.List;
+
 @Validated
 @CrossOrigin
 @RestController
@@ -31,14 +33,18 @@ public class UserModelController {
 		userModelService.createUser(userModel);
 		return new ResponseEntity<>(userModel, HttpStatus.CREATED);
 	}
-	
+
+	@GetMapping("/")
+	public ResponseEntity<?> readAllUser() {
+		List<UserModel> userModels = userModelService.readAll();
+		return new ResponseEntity<>(userModels, HttpStatus.OK);
+	}
 	
 	@GetMapping("/{username}")
 	public ResponseEntity<?> readByUserName(@PathVariable String username) {
 		UserModel userModel =  userModelService.readByUserName(username);
 		return new ResponseEntity<>(userModel, HttpStatus.OK);
 	}
-
 }
 
 
