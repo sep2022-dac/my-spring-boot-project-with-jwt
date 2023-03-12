@@ -12,8 +12,6 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import in.cdac.service.UserModelService;
-
 
 @EnableWebSecurity
 public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -30,9 +28,6 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(appUserDetailsService);
 	}
 	
-	
-	
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
@@ -47,16 +42,10 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 
-
-
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
 	}
-
-
-
 
 	// Durig our AuthController
 	@Bean
@@ -64,7 +53,4 @@ public class AppSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}
-	
-	
-
 }

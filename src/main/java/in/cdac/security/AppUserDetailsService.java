@@ -28,8 +28,5 @@ public class AppUserDetailsService implements UserDetailsService {
 		} else {
 			throw new UsernameNotFoundException("User doest not exist");
 		}
-		
 	}
-
-	
 }
