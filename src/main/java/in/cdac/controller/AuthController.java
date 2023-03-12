@@ -57,7 +57,7 @@ public class AuthController {
 	
 	
 	
-	// @PostMapping("/genreate")
+	@PostMapping("/generate")
 	public ResponseEntity<?> generateToken() {
 		String jwt =  Jwts.builder()
 				.setSubject("admin")
